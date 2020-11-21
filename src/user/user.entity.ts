@@ -12,19 +12,14 @@ import { BaseEntity } from '../base/base.entity';
 @Entity({ name: DOMAIN.USER })
 export class UserEntity extends BaseEntity {
   @Column({
-    nullable: false,
+    nullable: true,
   })
   first_name: string;
 
   @Column({
-    nullable: false,
+    nullable: true,
   })
   last_name: string;
-
-  @Column({
-    nullable: false,
-  })
-  phone: string;
 
   @Column({
     nullable: true,

@@ -72,10 +72,7 @@ export class UserController {
     }
 
     const user = new UserEntity();
-    user.first_name = signUpDto.first_name;
-    user.last_name = signUpDto.last_name;
     user.email = signUpDto.email;
-    user.phone = signUpDto.phone;
     user.password = crypto
       .createHmac('sha256', signUpDto.password)
       .digest('hex');
