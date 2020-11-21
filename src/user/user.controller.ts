@@ -114,10 +114,17 @@ export class UserController {
       );
     }
 
-    await this.userService.updateUser({
-      ...userFound,
-      password: hashedPassword,
-    });
+    if (userFound && userFound.password !== hashedPassword) {
+      throw new HttpException(
+        {
+          code: HttpStatus.BAD_REQUEST,
+          metadata: {
+            message: ERROR_MESSAGE_CODE.error_004,
+          },
+        },
+        HttpStatus.BAD_REQUEST,
+      );
+    }
 
     const token = generateToken({
       user_role: userFound.role,
